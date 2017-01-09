@@ -1,0 +1,41 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.2"
+
+    signingConfigs{
+        release {
+            keyAlias 'mapview'
+            keyPassword '199202'
+            storeFile file('E:/Android/apk/MapViewDemo.jks')
+            storePassword '199202'
+        }
+    }
+
+    defaultConfig {
+        applicationId "com.geziwulian.mapviewdemo"
+        minSdkVersion 15
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main.jniLibs.srcDirs = ['libs']
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:24.2.0'
+    compile files('libs/AMap_3DMap_V3.4.0_20160809.jar')
+    compile 'com.android.support:support-v4:24.2.0'
+    compile files('libs/AMap_Location_V2.9.0_20160906.jar')
+}
